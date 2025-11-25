@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .wrapper {
+      display: flex;
+    }
+
+    .block-a {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      margin-right: 100px;
+    }
+
+    .block-b {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="block-a">Block A use plain js</div>
+  
+    <div class="block-b"> Block B use react js</div>
+  </div>
+
+  <h3>How to transfer data from block b to block a and vice versa?</h3>
+
+  <script src="block-a.js"></script>
+  <script src="block-b.js"></script>
+</body>
+</html>
