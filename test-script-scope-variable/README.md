@@ -1,0 +1,1 @@
+What are the variable declaration syntaxes in js and their scope?
