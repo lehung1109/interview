@@ -1,0 +1,1 @@
+** what happen when declare a long line function in react function **
