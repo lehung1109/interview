@@ -1,3 +1,5 @@
+'use client';
+
 const TestComponent = () => {
   const handleClick = () => {
     console.log('validation form data before submit');
