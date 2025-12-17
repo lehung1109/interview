@@ -4,7 +4,7 @@ const TestComponent = () => {
   const handleClick = () => {
     console.log('validation form data before submit');
 
-    // validation code here
+    // more validation code here
   };
 
   return (
