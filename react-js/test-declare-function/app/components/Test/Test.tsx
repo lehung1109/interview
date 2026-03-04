@@ -9,6 +9,10 @@ const Test = () => {
   useEffect(() => {
     testFunction();
   }, []);
+  
+  useEffect(() => {
+    testFunction();
+  }, []);
 
   return (<>
     {/* Some html code */}
