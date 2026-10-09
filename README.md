@@ -1,13 +1,24 @@
 
-## Usage 
+## Usage
 
 ### For Interviewers
 
-Each folder contains:
-- Question sets with difficulty ratings
-- Expected answers and evaluation criteria
-- Time recommendations for each exercise
-- Follow-up questions for deeper assessment
+Start with [the Mid/Senior question bank](common.md), which includes target levels, expected answers, evaluation criteria, time estimates, and follow-up questions.
+
+Use [Accessibility](accessibility-questions.md), [Security](security-question.md), [DevOps](devops-question.md), and [SEO](seo-question.md) for role-specific deep dives. These specialist banks are prompts, not complete scoring rubrics; select questions and agree on expected answers before the interview. Do not require a particular cloud platform or specialist topic unless the job needs it.
+
+Suggested 60-minute interview:
+
+| Time | Activity |
+| --- | --- |
+| 5 minutes | Establish context and explain the exercise requirements. |
+| 25 minutes | Discuss 4-6 questions selected for the role. |
+| 20 minutes | Complete one practical exercise with explicit acceptance criteria. |
+| 10 minutes | Discuss trade-offs, a past debugging example, and candidate questions. |
+
+Score each question from 0 to 3 using the rubric in [common.md](common.md). Record evidence and hints given; do not use one total-score threshold for every level. Use the same core questions and support policy for candidates applying to the same role.
+
+Some exercise READMEs are still scaffold templates. Before assigning an exercise, document the observable behavior, required fix, setup, and acceptance criteria. Do not grade unstated requirements. Provide only the selected candidate exercise; keep interviewer notes and reference solutions private.
 
 ### Adding New Questions
 

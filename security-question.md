@@ -1,5 +1,9 @@
 # Security Questions cho Frontend Lead
 
+Chọn câu theo JD và mức kỳ vọng ở cuối tài liệu. Áp dụng thang chấm 0-3 trong
+[common.md](common.md); ghi rõ đáp án kỳ vọng trước buổi phỏng vấn.
+Đánh giá threat model và trade-off, không yêu cầu một kiến trúc auth duy nhất.
+
 ---
 
 ## XSS (Cross-Site Scripting)
@@ -7,7 +11,18 @@
 - **Q1:** Phân biệt **Stored XSS**, **Reflected XSS**, và **DOM-based XSS**. Cách mitigate từng loại trong React/Vue là gì?
 - **Q2:** Tại sao `innerHTML` nguy hiểm? Bạn sẽ dùng gì thay thế?
 - **Q3:** Content Security Policy (CSP) hoạt động như thế nào? Viết một CSP header hạn chế script chỉ từ cùng origin.
-  - *Expected answer:* `Content-Security-Policy: default-src 'self'; script-src 'self' trusted.com;`
+
+Đáp án kỳ vọng cho Q3:
+
+```http
+Content-Security-Policy: default-src 'self'; script-src 'self';
+```
+
+Đây là ví dụ tối thiểu, không phải policy đầy đủ cho mọi ứng dụng production.
+Inline script bị chặn nếu không có nonce/hash phù hợp. CSP không thay thế
+escaping hoặc sanitization; không thêm origin bên ngoài khi đề chỉ cho phép
+cùng origin.
+
 - **Q4:** DOMPurify dùng để làm gì? Khi nào bạn cần dùng nó?
 
 ---

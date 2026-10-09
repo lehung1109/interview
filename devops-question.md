@@ -1,12 +1,20 @@
 # DevOps Questions for Frontend Lead
 
+Chọn câu theo trách nhiệm deploy/operations trong JD. Docker và Azure chỉ là
+lựa chọn triển khai, không phải yêu cầu mặc định cho mọi frontend role.
+Áp dụng thang chấm 0-3 trong [common.md](common.md); ghi rõ đáp án kỳ vọng.
+
 ## CI/CD Pipeline
 
 - **CI/CD là gì và tại sao nó quan trọng với frontend?**
   (Giải thích flow từ push code → build → test → deploy)
 
 - **Khi `npm run build` chạy, điều gì xảy ra bên trong?**
-  (Webpack bundling, tree-shaking, code splitting, minification)
+Kỳ vọng: đọc script trong package.json trước khi mô tả các bước build.
+Next.js 16 mặc định dùng Turbopack cho dev/build; Webpack vẫn có thể được chọn
+bằng `--webpack`. Phân biệt compilation/bundling, TypeScript checking,
+prerendering theo cấu hình và runtime server. `next build` không tự chạy lint;
+pipeline phải có lint/test gates riêng.
 
 - **Làm thế nào để cache build artifacts trong CI pipeline để tăng tốc?**
   (node_modules caching, Docker layer caching)
@@ -69,7 +77,11 @@
 - **Bạn set up monitoring và alerting cho frontend app thế nào?**
   (Azure Monitor, Application Insights, Sentry)
 
-- **Core Web Vitals là gì và team bạn đo lường chúng thế nào trong pipeline?**
+- **Bạn kết hợp performance checks trong CI với real-user monitoring thế nào?**
+Kỳ vọng: Core Web Vitals hiện tại là LCP, INP, CLS. Lab checks giúp phát hiện
+regression nhưng không thay thế field data. Lighthouse navigation dùng TBT
+làm proxy cho interactivity, không trực tiếp đo INP của người dùng thực.
+Đánh giá field metrics tại p75, tách mobile/desktop và theo dõi sau release.
 
 ---
 
@@ -84,6 +96,6 @@
 
 ---
 
-> 💡 **Tip:** Kết hợp câu trả lời với các dịch vụ Azure cụ thể:
-> **Azure DevOps Pipelines**, **Azure Static Web Apps**,
-> **Azure Container Registry**, **Azure Application Insights**
+Chỉ đào sâu các dịch vụ Azure khi JD yêu cầu. Chấp nhận ví dụ tương đương từ
+cloud hoặc CI provider khác nếu ứng viên giải thích được nguyên tắc, cách
+kiểm chứng deployment và rollback.

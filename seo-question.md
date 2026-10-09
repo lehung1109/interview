@@ -1,5 +1,9 @@
 # Câu hỏi SEO dành cho FE Lead
 
+Chỉ dùng phần SEO chuyên sâu khi sản phẩm có yêu cầu search indexing.
+Không coi SEO là yêu cầu mặc định cho ứng dụng nội bộ. Áp dụng thang chấm 0-3
+trong [common.md](common.md) và ghi rõ đáp án kỳ vọng trước buổi phỏng vấn.
+
 ## 🔍 On-Page SEO
 
 1. Bạn xử lý `<title>` và `<meta description>` như thế nào để tối ưu SEO? Có dùng dynamic meta tag không?
@@ -10,11 +14,17 @@
 
 ## ⚡ Performance & Core Web Vitals
 
-6. Bạn theo dõi và tối ưu **Core Web Vitals** (LCP, FID/INP, CLS) như thế nào trong project FE?
+6. Bạn theo dõi và tối ưu **Core Web Vitals** (LCP, INP, CLS) như thế nào?
 7. Chiến lược **lazy loading** ảnh và component của bạn là gì?
 8. Bạn xử lý **font loading** (FOUT, FOIT) như thế nào để tránh ảnh hưởng CLS?
 9. Làm thế nào để giảm **render-blocking resources** (CSS, JS)?
 10. Bạn có sử dụng **image optimization** như WebP, `srcset`, `sizes` không?
+
+Đáp án kỳ vọng cho câu 6: INP đã thay FID trong Core Web Vitals từ năm 2024.
+Phân biệt lab với field data; Lighthouse navigation không đo trực tiếp INP
+của người dùng thực. Mức good tại p75: LCP <= 2.5 giây, INP <= 200 ms,
+CLS <= 0.1; tách mobile/desktop. Nêu bottleneck, cách tối ưu và phép đo lại,
+không chỉ kể tên chỉ số hoặc công cụ.
 
 ## 🤖 Technical SEO
 
