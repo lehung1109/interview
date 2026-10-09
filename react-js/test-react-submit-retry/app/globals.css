@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root { color: #26322d; background: #f4f6f5; font-family: Georgia, serif; }
+body { margin: 0; border-top: 5px solid #176b50; }
+main { max-width: 960px; margin: 40px auto; padding: 0 20px 40px; }
+h1 { font-size: 2rem; font-weight: bold; margin: 8px 0 24px; }
+.eyebrow, .metadata { color: #52635e; }
+button, input { font: inherit; border: 1px solid #647770; border-radius: 4px; padding: 10px 12px; }
+button { cursor: pointer; background: #176b50; color: white; }
+button:focus-visible, input:focus-visible { outline: 3px solid #b93952; outline-offset: 3px; }
+.expense-form { max-width: 600px; border-top: 1px solid #c1ccc6; padding-top: 24px; }
+.field { margin-bottom: 24px; }
+label { display: block; margin-bottom: 10px; }
+input, select { width: 100%; min-width: 0; background: white; }
+select { font: inherit; border: 1px solid #647770; border-radius: 4px; padding: 10px 12px; }
+select:focus-visible { outline: 3px solid #b93952; outline-offset: 3px; }
+button { min-width: 10rem; }
+button:disabled, input:disabled, select:disabled { opacity: 0.65; cursor: wait; }
+.field-error { color: #a22c44; margin-top: 8px; font-size: 0.875rem; }
+[aria-invalid="true"] { border-color: #a22c44; }
+#submit-status { display: block; min-height: 48px; margin-top: 20px; overflow-wrap: anywhere; color: #52635e; }
+#submit-status[data-state="error"], #submit-status[data-state="invalid"] { color: #a22c44; }
+.receipt { border-top: 1px solid #c1ccc6; margin-top: 24px; padding-top: 20px; overflow-wrap: anywhere; }
+.receipt h2 { font-size: 1.125rem; font-weight: bold; margin-bottom: 12px; }

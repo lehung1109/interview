@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test exercises.test.mjs",
+    "test:react": "node --test react-exercises.test.mjs",
     "install-browser": "playwright install chromium"
   },
   "devDependencies": {

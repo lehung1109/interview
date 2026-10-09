@@ -9,15 +9,18 @@ Chọn câu theo JD; không hỏi toàn bộ ngân hàng trong một buổi.
 
 ## Bài thực hành chạy được
 
-Nhóm đầu gồm ba cặp bài độc lập. Mở HTML trực tiếp trong browser, không cần
-server, build, API key hoặc mạng. Mỗi folder đề có README ghi acceptance
-criteria; README bản fixed có giải thích và rubric dành cho interviewer.
+Có năm cặp bài độc lập. P01-P03 mở HTML trực tiếp; P04-P05 cần Node.js >= 20.9,
+npm install và dev server theo README của từng bài. Không cần API key hoặc
+dịch vụ ngoài. Mỗi folder đề có acceptance criteria; README fixed có giải thích
+và rubric dành cho interviewer.
 
 | Bài | Đề và cách chạy | Lời giải nội bộ | Level / thời gian | Mapping |
 | --- | --- | --- | --- | --- |
 | P01: danh sách công việc động | [Đề](vanilla-js/test-script-event-delegation/README.md), [mở HTML](vanilla-js/test-script-event-delegation/index.html) | [README](vanilla-js/test-script-event-delegation-fixed/README.md), [HTML](vanilla-js/test-script-event-delegation-fixed/index.html) | Mid / 20 phút | Event delegation, bubbling, default action |
 | P02: tìm kiếm nhân viên và phòng họp | [Đề](vanilla-js/test-script-search-race/README.md), [mở HTML](vanilla-js/test-script-search-race/index.html) | [README](vanilla-js/test-script-search-race-fixed/README.md), [HTML](vanilla-js/test-script-search-race-fixed/index.html) | Mid / 30 phút; test cho Senior | Q03, Q05, Q13 |
 | P03: lịch làm việc responsive | [Đề](css/test-css-responsive-agenda/README.md), [mở HTML](css/test-css-responsive-agenda/index.html) | [README](css/test-css-responsive-agenda-fixed/README.md), [HTML](css/test-css-responsive-agenda-fixed/index.html) | Mid / 20 phút | Q01, Q02 |
+| P04: editor project với draft và reorder | [Đề / cách chạy](react-js/test-react-draft-board/README.md) | [Lời giải / cách chạy](react-js/test-react-draft-board-fixed/README.md) | Mid / Senior, 30 phút | Q06-Q08 |
+| P05: yêu cầu chi phí với submit/retry | [Đề / cách chạy](react-js/test-react-submit-retry/README.md) | [Lời giải / cách chạy](react-js/test-react-submit-retry-fixed/README.md) | Mid / Senior, 30 phút | Q09 |
 
 [Browser tests](tests/practical-exercises/README.md) kiểm tra cùng hành vi ở cả
 bản đề lẫn bản fixed. Bản đề cố ý fail một số test; bản fixed phải pass.
@@ -31,8 +34,6 @@ Không coi chúng là bài chạy được. Các câu gốc phía dưới giữ 
 | Bài dự kiến | Mapping | Sản phẩm cần bàn giao |
 | --- | --- | --- |
 | Import dữ liệu không chặn UI | Q04 | Pipeline xử lý file, UI tiến độ và bằng chứng input vẫn phản hồi. |
-| Editor React với draft và danh sách động | Q06-Q08 | Sửa effect loop, giữ draft đúng identity và reorder không đổi nhầm state. |
-| Submit form và retry an toàn | Q09 | Pending/error/success, chống thao tác trùng và test lỗi/retry. |
 | Dashboard App Router và mutation | Q10-Q11 | Ranh giới server/client, freshness sau mutation và cache isolation. |
 | Kiểm tra API contract bằng TypeScript | Q12, discriminated union | Runtime validation, state union và case response không hợp lệ. |
 | Tối ưu dashboard có dữ liệu lớn | Q14, memoization, transitions, Suspense, Error Boundary | Profiling trước/sau, UI phản hồi và fallback/error recovery. |

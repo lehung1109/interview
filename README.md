@@ -3,7 +3,7 @@
 
 ### For Interviewers
 
-Start with [the practical exercise index and question bank](common.md), which includes runnable exercises, target levels, expected answers, evaluation criteria, time estimates, and follow-up questions. The first three new exercise pairs are runnable; the remaining conversions are explicitly marked as not implemented.
+Start with [the practical exercise index and question bank](common.md), which includes runnable exercises, target levels, expected answers, evaluation criteria, time estimates, and follow-up questions. Five new exercise pairs are runnable; the remaining conversions are explicitly marked as not implemented.
 
 Use [Accessibility](accessibility-questions.md), [Security](security-question.md), [DevOps](devops-question.md), and [SEO](seo-question.md) for role-specific deep dives. These specialist banks are prompts, not complete scoring rubrics; select questions and agree on expected answers before the interview. Do not require a particular cloud platform or specialist topic unless the job needs it.
 
@@ -31,6 +31,14 @@ data. Open the HTML directly in a browser; no server or installation is required
 | Independent search / debounce / request race | [Open](vanilla-js/test-script-search-race/index.html) | [Open fixed](vanilla-js/test-script-search-race-fixed/index.html) | 30 minutes |
 | Responsive agenda / keyboard controls | [Open](css/test-css-responsive-agenda/index.html) | [Open fixed](css/test-css-responsive-agenda-fixed/index.html) | 20 minutes |
 
+The next two exercises use Next.js 16, React 19 and TypeScript. Follow each brief
+to install dependencies and start its own local dev server (Node.js >= 20.9).
+
+| Exercise | Candidate brief | Private reference | Time |
+| --- | --- | --- | --- |
+| Project draft / effect / reorder | [Setup and task](react-js/test-react-draft-board/README.md) | [Solution and setup](react-js/test-react-draft-board-fixed/README.md) | 30 minutes |
+| Expense request / submit / retry | [Setup and task](react-js/test-react-submit-retry/README.md) | [Solution and setup](react-js/test-react-submit-retry-fixed/README.md) | 30 minutes |
+
 Each candidate folder has its own brief and acceptance criteria. Each reference
 folder has a solution explanation and rubric. Preserve the intentionally broken
 candidate variants; do not replace them with reference solutions.
@@ -45,6 +53,9 @@ npm --prefix tests/practical-exercises test
 
 The default suite tests fixed variants. Broken variants must fail the corresponding
 behavior checks; see the test README for variant and installed-browser options.
+React browser/API verification uses `npm --prefix tests/practical-exercises run test:react`
+after installing the two fixed projects. The test runner owns temporary servers
+and does not stop unrelated user dev servers. Test setup/details are in its README.
 
 ### Adding New Questions
 
