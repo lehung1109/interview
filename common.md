@@ -1,4 +1,4 @@
-# Câu hỏi Frontend: Mid / Senior
+# Bài thực hành và câu hỏi Frontend: Mid / Senior
 
 Tài liệu nội bộ dành cho người phỏng vấn. Không chia sẻ ngân hàng câu hỏi,
 đáp án hoặc thư mục `-fixed` với ứng viên.
@@ -7,9 +7,42 @@ Bộ câu hỏi ưu tiên JavaScript, React 19, Next.js 16 App Router và TypeSc
 Level là mức đánh giá mục tiêu, không phải yêu cầu thuộc lòng API.
 Chọn câu theo JD; không hỏi toàn bộ ngân hàng trong một buổi.
 
+## Bài thực hành chạy được
+
+Nhóm đầu gồm ba cặp bài độc lập. Mở HTML trực tiếp trong browser, không cần
+server, build, API key hoặc mạng. Mỗi folder đề có README ghi acceptance
+criteria; README bản fixed có giải thích và rubric dành cho interviewer.
+
+| Bài | Đề và cách chạy | Lời giải nội bộ | Level / thời gian | Mapping |
+| --- | --- | --- | --- | --- |
+| P01: danh sách công việc động | [Đề](vanilla-js/test-script-event-delegation/README.md), [mở HTML](vanilla-js/test-script-event-delegation/index.html) | [README](vanilla-js/test-script-event-delegation-fixed/README.md), [HTML](vanilla-js/test-script-event-delegation-fixed/index.html) | Mid / 20 phút | Event delegation, bubbling, default action |
+| P02: tìm kiếm nhân viên và phòng họp | [Đề](vanilla-js/test-script-search-race/README.md), [mở HTML](vanilla-js/test-script-search-race/index.html) | [README](vanilla-js/test-script-search-race-fixed/README.md), [HTML](vanilla-js/test-script-search-race-fixed/index.html) | Mid / 30 phút; test cho Senior | Q03, Q05, Q13 |
+| P03: lịch làm việc responsive | [Đề](css/test-css-responsive-agenda/README.md), [mở HTML](css/test-css-responsive-agenda/index.html) | [README](css/test-css-responsive-agenda-fixed/README.md), [HTML](css/test-css-responsive-agenda-fixed/index.html) | Mid / 20 phút | Q01, Q02 |
+
+[Browser tests](tests/practical-exercises/README.md) kiểm tra cùng hành vi ở cả
+bản đề lẫn bản fixed. Bản đề cố ý fail một số test; bản fixed phải pass.
+Không giao test, mục lục có lời giải hoặc folder fixed cho ứng viên.
+
+## Nhóm tiếp theo: chưa triển khai
+
+Các hàng dưới đây là định hướng chuyển đổi, chưa có starter hoặc lời giải mới.
+Không coi chúng là bài chạy được. Các câu gốc phía dưới giữ để tham chiếu.
+
+| Bài dự kiến | Mapping | Sản phẩm cần bàn giao |
+| --- | --- | --- |
+| Import dữ liệu không chặn UI | Q04 | Pipeline xử lý file, UI tiến độ và bằng chứng input vẫn phản hồi. |
+| Editor React với draft và danh sách động | Q06-Q08 | Sửa effect loop, giữ draft đúng identity và reorder không đổi nhầm state. |
+| Submit form và retry an toàn | Q09 | Pending/error/success, chống thao tác trùng và test lỗi/retry. |
+| Dashboard App Router và mutation | Q10-Q11 | Ranh giới server/client, freshness sau mutation và cache isolation. |
+| Kiểm tra API contract bằng TypeScript | Q12, discriminated union | Runtime validation, state union và case response không hợp lệ. |
+| Tối ưu dashboard có dữ liệu lớn | Q14, memoization, transitions, Suspense, Error Boundary | Profiling trước/sau, UI phản hồi và fallback/error recovery. |
+| Dialog dùng keyboard và screen reader | Q15 | Focus lifecycle, background inert và kiểm chứng tương tác. |
+| Review và sửa luồng cookie session | Q16 | Patch server/client, threat model và case XSS/CSRF/authorization. |
+| Deployment, SEO và quyết định release | E01-E03 | Artifact/pipeline lab, SEO debug và kế hoạch ưu tiên có bằng chứng. |
+
 ## Cách đánh giá
 
-Mỗi câu chấm từ 0 đến 3 theo bằng chứng trong câu trả lời:
+Mỗi câu hoặc bài chấm từ 0 đến 3 theo bằng chứng trong lời giải và kiểm chứng:
 
 | Điểm | Tiêu chí |
 | --- | --- |

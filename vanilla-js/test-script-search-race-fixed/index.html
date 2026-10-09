@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace directory</title>
+  <style>
+    :root { font-family: Georgia, serif; color: #26322d; background: #f4f6f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; border-top: 5px solid #176b50; }
+    main { max-width: 900px; margin: 48px auto; padding: 0 20px; }
+    h1 { font-size: 32px; }
+    .directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    section { min-width: 0; border-top: 1px solid #c1ccc6; padding-top: 12px; }
+    label { display: block; margin-bottom: 10px; }
+    input { width: 100%; font: inherit; padding: 12px; border: 1px solid #647770; border-radius: 4px; }
+    input:focus-visible { outline: 3px solid #b93952; outline-offset: 3px; }
+    .status { display: block; min-height: 48px; margin: 1em 0; color: #52635e; }
+    [data-state="error"] { color: #a22c44; }
+    .results { list-style: none; padding: 0; min-height: 160px; }
+    .results li { border-bottom: 1px solid #d0d9d4; padding: 14px 0; overflow-wrap: anywhere; }
+    .log { margin-top: 32px; }
+    #request-log { font-family: Consolas, monospace; font-size: 14px; line-height: 1.8; }
+    @media (max-width: 600px) { .directory { grid-template-columns: 1fr; gap: 20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p>OPERATIONS / DIRECTORY</p>
+
+      <h1>Workspace directory</h1>
+    </header>
+
+    <div class="directory">
+      <section aria-labelledby="people-title">
+        <h2 id="people-title">People</h2>
+
+        <label for="people-query">Find a colleague</label>
+
+        <input id="people-query" type="search" autocomplete="off" aria-describedby="people-status">
+
+        <output id="people-status" class="status" data-state="idle">No search active.</output>
+
+        <ul id="people-results" class="results" aria-label="People results"></ul>
+      </section>
+
+      <section aria-labelledby="rooms-title">
+        <h2 id="rooms-title">Rooms</h2>
+
+        <label for="rooms-query">Find a meeting space</label>
+
+        <input id="rooms-query" type="search" autocomplete="off" aria-describedby="rooms-status">
+
+        <output id="rooms-status" class="status" data-state="idle">No search active.</output>
+
+        <ul id="rooms-results" class="results" aria-label="Room results"></ul>
+      </section>
+    </div>
+
+    <section class="log" aria-labelledby="log-title">
+      <h2 id="log-title">Request log</h2>
+
+      <ol id="request-log" aria-label="API requests"></ol>
+    </section>
+  </main>
+
+  <script>
+    const directory = {
+      people: ["Anna Nguyen", "Andrew Tran", "Mark Lee"],
+      rooms: ["Cedar room", "River room", "Studio"]
+    };
+
+    function fakeSearch(kind, query) {
+      const entry = document.createElement("li");
+      entry.textContent = `${kind}: ${query}`;
+      document.querySelector("#request-log").append(entry);
+      const delay = query === "a" || query === "error" ? 900 : 120;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (query === "error") {
+            reject(new Error("Directory unavailable. Try again."));
+            return;
+          }
+          resolve(directory[kind].filter(name => name.toLowerCase().includes(query)));
+        }, delay);
+      });
+    }
+
+    function setStatus(kind, state, message) {
+      const status = document.querySelector(`#${kind}-status`);
+      status.dataset.state = state;
+      status.textContent = message;
+    }
+
+    function renderResults(kind, records) {
+      const rows = records.map(name => {
+        const row = document.createElement("li");
+        row.textContent = name;
+        return row;
+      });
+      document.querySelector(`#${kind}-results`).replaceChildren(...rows);
+    }
+
+    function bindSearch(kind) {
+      let timer;
+      let requestId = 0;
+
+      document.querySelector(`#${kind}-query`).addEventListener("input", event => {
+        clearTimeout(timer);
+        const currentRequest = ++requestId;
+        const query = event.target.value.trim().toLowerCase();
+        renderResults(kind, []);
+        if (!query) {
+          setStatus(kind, "idle", "No search active.");
+          return;
+        }
+        setStatus(kind, "pending", "Waiting to search...");
+        timer = setTimeout(async () => {
+          setStatus(kind, "loading", "Searching...");
+          try {
+            const records = await fakeSearch(kind, query);
+            if (currentRequest !== requestId) return;
+            renderResults(kind, records);
+            setStatus(kind, records.length ? "success" : "empty", records.length ? `${records.length} matches` : "No matches.");
+          } catch (error) {
+            if (currentRequest !== requestId) return;
+            renderResults(kind, []);
+            setStatus(kind, "error", error.message);
+          }
+        }, 300);
+      });
+    }
+
+    for (const kind of ["people", "rooms"]) bindSearch(kind);
+  </script>
+</body>
+</html>

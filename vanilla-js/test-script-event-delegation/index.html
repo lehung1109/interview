@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team tasks</title>
+  <style>
+    :root { font-family: Georgia, serif; color: #202727; background: #f2f5f3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; border-top: 5px solid #176b50; }
+    main { max-width: 760px; margin: 48px auto; padding: 0 20px; }
+    h1 { font-size: 32px; margin-bottom: 8px; }
+    p { color: #52635e; }
+    form { display: grid; grid-template-columns: 1fr auto; gap: 12px; margin: 28px 0; }
+    label { grid-column: 1 / -1; }
+    input, button { font: inherit; padding: 12px; border: 1px solid #647770; border-radius: 4px; }
+    input { min-width: 0; }
+    button { background: #176b50; color: white; cursor: pointer; }
+    button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #b93952; outline-offset: 3px; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid #c6d1cb; }
+    .task-title { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+    li button { color: #a22c44; background: white; border-color: #ba8a94; }
+    a { color: #176b50; display: inline-block; margin-top: 20px; }
+    #stats { margin-top: 60px; border-top: 1px solid #c6d1cb; padding-top: 20px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p>OPERATIONS / TODAY</p>
+
+      <h1>Team tasks</h1>
+    </header>
+
+    <form id="task-form">
+      <label for="task-name">New task</label>
+
+      <input id="task-name" name="task" autocomplete="off" maxlength="160">
+
+      <button type="submit">Add task</button>
+    </form>
+
+    <section id="task-area" aria-label="Task list">
+      <ul id="task-list">
+        <li data-task-id="1">
+          <span class="task-title">Review purchase orders</span>
+
+          <button type="button" data-action="delete" aria-label="Delete Review purchase orders"><span>Delete</span></button>
+        </li>
+
+        <li data-task-id="2">
+          <span class="task-title">Confirm room bookings</span>
+
+          <button type="button" data-action="delete" aria-label="Delete Confirm room bookings"><span>Delete</span></button>
+        </li>
+      </ul>
+
+      <a href="#stats">View statistics</a>
+    </section>
+
+    <section id="stats" aria-labelledby="stats-title">
+      <h2 id="stats-title">Statistics</h2>
+
+      <p id="task-count" aria-live="polite">2 tasks remaining</p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#task-form");
+    const input = document.querySelector("#task-name");
+    const list = document.querySelector("#task-list");
+    let nextId = 3;
+
+    function updateCount() {
+      document.querySelector("#task-count").textContent = `${list.children.length} tasks remaining`;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const title = input.value.trim();
+      if (!title) return;
+      const row = document.createElement("li");
+      row.dataset.taskId = String(nextId++);
+      const text = document.createElement("span");
+      text.className = "task-title";
+      text.textContent = title;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.action = "delete";
+      button.setAttribute("aria-label", `Delete ${title}`);
+      const label = document.createElement("span");
+      label.textContent = "Delete";
+      button.append(label);
+      row.append(text, button);
+      list.append(row);
+      input.value = "";
+      input.focus();
+      updateCount();
+    });
+
+    document.querySelectorAll('[data-action="delete"]').forEach(button => {
+      button.addEventListener("click", event => {
+        if (event.target.tagName !== "BUTTON") return;
+        button.closest("li").remove();
+        updateCount();
+      });
+    });
+
+    document.querySelector("#task-area").addEventListener("click", event => {
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>
