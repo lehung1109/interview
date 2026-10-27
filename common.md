@@ -9,7 +9,7 @@ Chọn câu theo JD; không hỏi toàn bộ ngân hàng trong một buổi.
 
 ## Bài thực hành chạy được
 
-Có năm cặp bài độc lập. P01-P03 mở HTML trực tiếp; P04-P05 cần Node.js >= 20.9,
+Có bảy cặp bài độc lập. P01-P03 mở HTML trực tiếp; P04-P07 cần Node.js >= 20.9,
 npm install và dev server theo README của từng bài. Không cần API key hoặc
 dịch vụ ngoài. Mỗi folder đề có acceptance criteria; README fixed có giải thích
 và rubric dành cho interviewer.
@@ -21,6 +21,8 @@ và rubric dành cho interviewer.
 | P03: lịch làm việc responsive | [Đề](css/test-css-responsive-agenda/README.md), [mở HTML](css/test-css-responsive-agenda/index.html) | [README](css/test-css-responsive-agenda-fixed/README.md), [HTML](css/test-css-responsive-agenda-fixed/index.html) | Mid / 20 phút | Q01, Q02 |
 | P04: editor project với draft và reorder | [Đề / cách chạy](react-js/test-react-draft-board/README.md) | [Lời giải / cách chạy](react-js/test-react-draft-board-fixed/README.md) | Mid / Senior, 30 phút | Q06-Q08 |
 | P05: yêu cầu chi phí với submit/retry | [Đề / cách chạy](react-js/test-react-submit-retry/README.md) | [Lời giải / cách chạy](react-js/test-react-submit-retry-fixed/README.md) | Mid / Senior, 30 phút | Q09 |
+| P06: tồn kho theo workspace và cache | [Đề / cách chạy](react-js/test-next-workspace-cache/README.md) | [Lời giải / cách chạy](react-js/test-next-workspace-cache-fixed/README.md) | Mid / Senior, 30 phút | Q10-Q11 |
+| P07: runtime API contract và state | [Đề / cách chạy](react-js/test-typescript-api-contract/README.md) | [Lời giải / cách chạy](react-js/test-typescript-api-contract-fixed/README.md) | Mid / Senior, 30 phút | Q12, discriminated union |
 
 [Browser tests](tests/practical-exercises/README.md) kiểm tra cùng hành vi ở cả
 bản đề lẫn bản fixed. Bản đề cố ý fail một số test; bản fixed phải pass.
@@ -34,8 +36,6 @@ Không coi chúng là bài chạy được. Các câu gốc phía dưới giữ 
 | Bài dự kiến | Mapping | Sản phẩm cần bàn giao |
 | --- | --- | --- |
 | Import dữ liệu không chặn UI | Q04 | Pipeline xử lý file, UI tiến độ và bằng chứng input vẫn phản hồi. |
-| Dashboard App Router và mutation | Q10-Q11 | Ranh giới server/client, freshness sau mutation và cache isolation. |
-| Kiểm tra API contract bằng TypeScript | Q12, discriminated union | Runtime validation, state union và case response không hợp lệ. |
 | Tối ưu dashboard có dữ liệu lớn | Q14, memoization, transitions, Suspense, Error Boundary | Profiling trước/sau, UI phản hồi và fallback/error recovery. |
 | Dialog dùng keyboard và screen reader | Q15 | Focus lifecycle, background inert và kiểm chứng tương tác. |
 | Review và sửa luồng cookie session | Q16 | Patch server/client, threat model và case XSS/CSRF/authorization. |

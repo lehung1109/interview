@@ -86,4 +86,31 @@ Draft tests dùng clock dừng trước input. Submit tests gọi API local th�
 key riêng cho mỗi case. Backend memory reset khi restart/hot reload; đây không
 phải API production. Screenshot được lưu trong test-results đã git-ignore.
 
+## Kiểm tra Next cache và API contract
+
+Node.js >=20.9. Bộ test có dependency tsx để import parser TypeScript trực tiếp.
+Cài các project và cập nhật dependency của bộ test từ root repo:
+
+```powershell
+npm --prefix tests/practical-exercises install
+npm --prefix react-js/test-next-workspace-cache-fixed install
+npm --prefix react-js/test-typescript-api-contract-fixed install
+$env:PLAYWRIGHT_CHANNEL = 'msedge'
+npm --prefix tests/practical-exercises run test:next
+Remove-Item Env:PLAYWRIGHT_CHANNEL
+```
+
+Mặc định chạy cả hai nhóm. NEXT_EXERCISE=cache hoặc contract chọn một nhóm;
+all chạy cả hai. EXERCISE_VARIANT=broken dùng hai starter đã cài dependency,
+với cùng assertions và các failure có chủ đích. Xóa các biến sau khi chạy.
+
+Suite tạo port trống và build directory .next/test-PORT-RUNID riêng, truyền qua
+NEXT_EXERCISE_DISTDIR. Next cache cũ không làm sai fixture giữa các test run.
+Cleanup chỉ dừng process tree/output do suite tạo, không dừng preview server.
+
+Action tests nhận đúng POST root và chờ trạng thái DOM có timeout; không chờ
+response stream kết thúc vô hạn. Loader tests vẫn gọi API thật; parser tests
+dùng literal payload độc lập với schema. Screenshot lưu trong test-results.
+
+
 
